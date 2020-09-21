@@ -1,24 +1,32 @@
 window.addEventListener('DOMContentLoaded', () =>{
     'use strict'
     
+    
+    const newTable = fetch('http://localhost/catalog/server.php?getGoods')
+                        .then(response => response.json())
+                        .then(result => {tableBuilder(result)});
 
-    buildTable(data);
+    //tableBuilder(data);
 
+
+    
 })
 
-const data = {
-    1: {
-        name: 'Наушники',
-        category: 'Аудиотехника',
-        price: 2000,
-        popularity: 999
-    }
-}
+/*const data = [
+    ['Наушники', 'Аудиотехника', 2000, 999],
+    ['Микрофон', 'Что-то там', 9999, 7653]
+]*/
 
-function buildTable(data){
+
+
+//innerHTML = `<a href="#">${data[1][key]}</a>`
+
+function tableBuilder(data){
     const table = document.getElementsByClassName('cat_table')[0];
-    const newRow = table.insertRow(-1);
-    for (let key in data[1]) {
-        newRow.insertCell(-1).innerHTML = data[1][key];
+    for (let row of data){
+        const newRow = table.insertRow(-1);
+        for (let value of row) {
+            newRow.insertCell(-1).innerHTML = value;
+        }
     }
 }
