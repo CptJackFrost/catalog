@@ -13,7 +13,7 @@
             $data = [];
 
             if ($id){
-                $query = mysqli_query($this->database, "select name, category, price from goods where id = {$id}");
+                $query = mysqli_query($this->database, "select name, category, price, img from goods g left join goods_img i on g.id = i.good_id where id = {$id}");
             } else {
                 $query = mysqli_query($this->database, 'select id, name, category, price from goods');
             }
