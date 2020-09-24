@@ -22,7 +22,7 @@
             if ($id){
                 $query = mysqli_query($this->database, "select name, category, price, img from goods g left join goods_img i on g.id = i.good_id where id = {$id}");
             } else {
-                $query = mysqli_query($this->database, 'select id, name, category, price from goods');
+                $query = mysqli_query($this->database, 'select g.id, g.name, g.category, g.price, q.views, q.p from goods g left join (SELECT a.id, views, p from (select g.id, count(*) as views from goods g left join counter c on c.page_id = g.id where negative = 0 group by c.page_id) a left join (select g.id, count(*) as p from goods g left join goods_img c on c.good_id = g.id group by c.good_id) b on a.id = b.id) q on g.id = q.id');
             }
 
             $result = mysqli_fetch_all($query);
