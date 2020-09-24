@@ -8,6 +8,13 @@
             $this->database = mysqli_connect($server, $user, $password, $db);
         }
 
+        function updateViews($id){
+            session_start();
+            $visit_date = date('m/d/Y h:i:s a', time());
+            return mysqli_query($this->database, "insert into counter (date, negative, page_id) values ({$visit_date}, true, {$id})");
+        }
+    
+
         function getGoods($id = false){
 
             $data = [];

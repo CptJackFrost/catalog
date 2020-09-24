@@ -17,7 +17,6 @@ window.addEventListener('DOMContentLoaded', () =>{
     const query = fetch(`http://localhost/catalog/server.php?getGoods&id=${a}`);
     query.then(response => response.json())
         .then(result => {
-            console.log(result);
             name.textContent = result[0][0];
             category.textContent = result[0][1];
             price.textContent = `${result[0][2]} рублей`;
@@ -25,6 +24,5 @@ window.addEventListener('DOMContentLoaded', () =>{
                 addImage(array[3]);
             }
         })
-    console.log(a);
 
 })
