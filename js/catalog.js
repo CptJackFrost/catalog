@@ -20,6 +20,6 @@ function tableBuilder(data){
         newRow.insertCell(-1).innerHTML = `<a href="card.html?id=${row[0]}">${row[1]}</a>`;
         newRow.insertCell(-1).innerHTML = row[2];
         newRow.insertCell(-1).innerHTML = row[3];        
-        newRow.insertCell(-1).innerHTML = row[4] = 10* p;
+        newRow.insertCell(-1).innerHTML = row[4] + 10 * p;
     }
 }
